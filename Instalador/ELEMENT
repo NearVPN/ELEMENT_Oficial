@@ -249,12 +249,13 @@ install_paquetes() {
   [[ $(sudo lsof -i :81) ]] || ESTATUSP=$(echo -e "\033[1;91m      >>>  FALLO DE INSTALACION EN APACHE <<<") &>/dev/null
   [[ $(sudo lsof -i :81) ]] && ESTATUSP=$(echo -e "\033[1;92m          PUERTO APACHE ACTIVO CON EXITO") &>/dev/null
   echo ""
-  echo -e "$ESTATUSP"
+  #echo -e "$ESTATUSP"
   echo ""
   echo -e "\e[1;97m        REMOVIENDO PAQUETES OBSOLETOS - \e[1;32m OK"
   apt autoremove -y &>/dev/null
   [[ "$VERSION_ID" = '9' ]] && apt remove unscd -y &>/dev/null
   sleep 2
+  tput cuu1 && tput dl1
   echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
   echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
   msgi -bar2

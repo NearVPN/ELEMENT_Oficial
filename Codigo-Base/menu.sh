@@ -109,7 +109,7 @@ msg() {
   -verd) cor="${COLOR[2]}${NEGRITO}" && echo -e "${cor}${2}${SINCOLOR}" ;;
   -bra) cor="${COLOR[0]}${SINCOLOR}" && echo -e "${cor}${2}${SINCOLOR}" ;;
   "-bar2" | "-bar") cor="${COLOR[1]}════════════════════════════════════════════════════" && echo -e "${SINCOLOR}${cor}${SINCOLOR}" ;;
-  -tit) echo -e " \e[48;5;214m\e[38;5;0m   💻 𝙎 𝘾 𝙍 𝙄 𝙋 𝙏 | 𝙇 𝘼 𝙏 𝘼 𝙈 💻   \e[0m  $vesaoSCT" ;;
+  -tit) echo -e " \e[48;5;214m\e[38;5;0m      🖥  SCRIPT | ELEMENT  🖥      \e[0m  $vesaoSCT" ;;
   esac
 }
 

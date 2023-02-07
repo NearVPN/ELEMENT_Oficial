@@ -99,7 +99,7 @@ install_inicial() {
   os_system
   repo "${vercion}"
   msgi -bar2
-  echo -e " \e[5m\033[1;100m   =====>> ►►  🖥  SCRIPT | ELEMENT  🖥  ◄◄ <<=====   \033[1;37m"
+  echo -e " \e[33m\033[1;100m   ===>> ►►  🖥 SCRIPT | ELEMENT 🖥  ◄◄ <<===   \033[1;37m"
   msgi -bar2
   msgi -ama "   PREPARANDO INSTALACION | VERSION: $vesaoSCT"
   msgi -bar2

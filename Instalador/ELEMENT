@@ -179,7 +179,7 @@ install_paquetes() {
   clear && clear
   #------- BARRA DE ESPERA
   msgi -bar2
-  echo -e " \e[5m\033[1;100m   =====>> ►►  🖥  SCRIPT | ELEMENT  🖥  ◄◄ <<=====   \033[1;37m"
+  echo -e " \e[33m\033[1;100m   ===>> ►►  🖥 SCRIPT | ELEMENT 🖥  ◄◄ <<===   \033[1;37m"
   msgi -bar
   echo -e "  \033[1;41m    -- INSTALACION DE PAQUETES PARA ELEMENT --   \e[49m"
   msgi -bar

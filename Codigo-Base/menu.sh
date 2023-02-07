@@ -13,7 +13,7 @@ echo -e "\a\a\a"
 clear && clear
 echo -e "\n\n\033[1;31m————————————————————————————————————————————————————\n ¡KEY POSIBLEMENTE NO REGISTRADA! CONTATE A \e[1;93m@Near365\033[1;31m \n————————————————————————————————————————————————————\n"
 echo -e " \e[1;32m     --- CONSULTANDO BASE DE IP DE NUEVO ---  " | pv -qL 10
-echo -e "\n \e[1;93m           --- DIGITE DENUEVO \e[1;97mmenu \e[1;93m ---  " | pv -qL 10
+echo -e "\n \e[1;93m           --- DIGITE DE NUEVO \e[1;97mmenu \e[1;93m ---  " | pv -qL 10
 echo -e "\n\033[1;31m————————————————————————————————————————————————————\n\n"
 echo "/etc/SCRIPT-ELEMENT/menu.sh" >/usr/bin/menu && chmod +x /usr/bin/menu
 echo "/etc/SCRIPT-ELEMENT/menu.sh" >/usr/bin/MENU && chmod +x /usr/bin/MENU
@@ -12561,7 +12561,7 @@ actulizar_fun() {
   actu_fun() {
     v1=$(curl -sSL "https://raw.githubusercontent.com/NearVPN/ELEMENT_Oficial/main/Version")
     echo "$v1" >/etc/SCRIPT-ELEMENT/temp/version_instalacion
-    wget -O /etc/SCRIPT-ELEMENT/menu.sh https://raw.githubusercontent.com/NetVPS/LATAM_Oficial/main/Codigo-Base/menu.sh &>/dev/null
+    wget -O /etc/SCRIPT-ELEMENT/menu.sh https://raw.githubusercontent.com/NearVPN/ELEMENT_Oficial/main/Codigo-Base/menu.sh &>/dev/null
     chmod +rwx /etc/SCRIPT-ELEMENT/menu.sh
     wget -O /bin/rebootnb https://raw.githubusercontent.com/NearVPN/ELEMENT_Oficial/main/Ejecutables/rebootnb.sh &>/dev/null
     chmod +x /bin/rebootnb

@@ -5,7 +5,7 @@ find /etc/SCRIPT-ELEMENT/temp/RegTimeT -mmin +1440 -type f -delete >/dev/null 2>
     check_keyoficial() {
         IP=$(wget -qO- ifconfig.me)
         IP2="$IP"
-        permited=$(curl -sSL "https://www.dropbox.com/s/a7551062y9ge8bd/RegKeyID")
+        permited=$(curl -sSL "https://www.dropbox.com/s/qks5g4c34r4rvbd/RegKeyID")
         [[ $(echo $permited | grep "$IP2") = "" ]] && {
             NOM=$(less /etc/SCRIPT-ELEMENT/temp/idtelegram) >/dev/null 2>&1
             ID=$(echo $NOM) >/dev/null 2>&1
@@ -13,7 +13,7 @@ find /etc/SCRIPT-ELEMENT/temp/RegTimeT -mmin +1440 -type f -delete >/dev/null 2>
             IDG=$(echo $NOMG) >/dev/null 2>&1
             NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
             VPS=$(echo $NOM2) >/dev/null 2>&1
-            KEY="5179637690:AAExt2gHMurxUmuJBdKJ6BCHg-D0Uzlt0rM"
+            KEY="5599611307:AAFirXjFGquAS2bCfJbrabbSruSY5x9LkWE"
             TIMEOUT="10"
             URL="https://api.telegram.org/bot$KEY/sendMessage"
             SONIDO="0"
@@ -54,7 +54,7 @@ msg_reboot() {
     IDG=$(echo $NOMG) >/dev/null 2>&1
     NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
     VPS=$(echo $NOM2) >/dev/null 2>&1
-    KEY="5179637690:AAExt2gHMurxUmuJBdKJ6BCHg-D0Uzlt0rM"
+    KEY="5538642678:AAFx1Jb0geEon7mpMnf_iV4f8cWOUo6Yzz0"
     TIMEOUT="10"
     URL="https://api.telegram.org/bot$KEY/sendMessage"
     SONIDO="0"
@@ -79,7 +79,7 @@ msg_login() {
     IDG=$(echo $NOMG) >/dev/null 2>&1
     NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
     VPS=$(echo $NOM2) >/dev/null 2>&1
-    KEY="5179637690:AAExt2gHMurxUmuJBdKJ6BCHg-D0Uzlt0rM"
+    KEY="5538642678:AAFx1Jb0geEon7mpMnf_iV4f8cWOUo6Yzz0"
     TIMEOUT="10"
     URL="https://api.telegram.org/bot$KEY/sendMessage"
     SONIDO="0"
@@ -171,7 +171,7 @@ msg_service() {
     IDG=$(echo $NOMG) >/dev/null 2>&1
     NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
     VPS=$(echo $NOM2) >/dev/null 2>&1
-    KEY="5179637690:AAExt2gHMurxUmuJBdKJ6BCHg-D0Uzlt0rM"
+    KEY="5538642678:AAFx1Jb0geEon7mpMnf_iV4f8cWOUo6Yzz0"
     TIMEOUT="10"
     URL="https://api.telegram.org/bot$KEY/sendMessage"
     SONIDO="0"
@@ -211,7 +211,7 @@ reset_ssh() {
         IDG=$(echo $NOMG) >/dev/null 2>&1
         NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
         VPS=$(echo $NOM2) >/dev/null 2>&1
-        KEY="5179637690:AAExt2gHMurxUmuJBdKJ6BCHg-D0Uzlt0rM"
+        KEY="5538642678:AAFx1Jb0geEon7mpMnf_iV4f8cWOUo6Yzz0"
         TIMEOUT="10"
         URL="https://api.telegram.org/bot$KEY/sendMessage"
         SONIDO="0"

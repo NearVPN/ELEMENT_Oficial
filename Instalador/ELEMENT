@@ -241,7 +241,7 @@ install_paquetes() {
   msgi -bar2
   echo -e " \e[33m\033[1;100m   ===>> ►►  🖥 SCRIPT | ELEMENT 🖥  ◄◄ <<===   \033[1;37m"
   msgi -bar
-  echo -e "  \033[1;41m    -- INSTALACION DE PAQUETES PARA ELEMENT --   \e[49m"
+  echo -e " \033[1;41m   -- INSTALACION DE PAQUETES PARA ELEMENT --  \e[49m"
   msgi -bar
   dependencias
   sed -i "s;Listen 80;Listen 81;g" /etc/apache2/ports.conf >/dev/null 2>&1
@@ -249,7 +249,7 @@ install_paquetes() {
   [[ $(sudo lsof -i :81) ]] || ESTATUSP=$(echo -e "\033[1;91m      >>>  FALLO DE INSTALACION EN APACHE <<<") &>/dev/null
   [[ $(sudo lsof -i :81) ]] && ESTATUSP=$(echo -e "\033[1;92m          PUERTO APACHE ACTIVO CON EXITO") &>/dev/null
   echo ""
-  #echo -e "$ESTATUSP"
+  echo -e "$ESTATUSP"
   echo ""
   echo -e "\e[1;97m        REMOVIENDO PAQUETES OBSOLETOS - \e[1;32m OK"
   apt autoremove -y &>/dev/null
@@ -259,7 +259,9 @@ install_paquetes() {
   echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
   echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
   msgi -bar2
-  read -t 30 -n 1 -rsp $'\033[1;97m           Preciona Enter Para continuar\n'
+  print_center -ama "si algunas de las dependencias falla!!!\nal terminar, puede intentar instalar\nla misma manualmente usando el siguiente comando\napt install nom_del_paquete"
+  enter
+ # read -t 30 -n 1 -rsp $'\033[1;97m           Preciona Enter Para continuar\n'
 }
 
 #SELECTOR DE INSTALACION

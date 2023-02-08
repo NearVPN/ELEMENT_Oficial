@@ -399,11 +399,11 @@ remove_script() {
   msg -bar
   echo -e "\e[1;97m        Esto borrara todos los archivos ELEMENT"
   msg -bar
-  while [[ ${yesno} != @(s|S|y|Y|n|N) ]]; do
+  while [[ ${yesno} != @(s|S|y|Y|n|N|si|Si|yes|Yes|no|No) ]]; do
     read -p " [ Si/No ]: " yesno
     tput cuu1 && tput dl1
   done
-  if [[ ${yesno} = @(s|S|y|Y) ]]; then
+  if [[ ${yesno} = @(s|S|y|Y|si|Si|yes|Yes) ]]; then
     rm -rf ${SCPdir} &>/dev/null
     rm -rf ${SCPusr} &>/dev/null
     rm -rf ${SCPinst} &>/dev/null
@@ -411,6 +411,8 @@ remove_script() {
     [[ -e /usr/bin/MENU ]] && rm /usr/bin/MENU
     [[ -e /bin/menu ]] && rm /bin/menu
     [[ -e /usr/bin/menu ]] && rm /usr/bin/menu
+	[[ -e /bin/ELEMENT ]] && rm /bin/ELEMENT
+    [[ -e /usr/bin/ELEMENT ]] && rm /usr/bin/ELEMENT
     sudo apt-get --purge remove squid -y >/dev/null 2>&1
     sudo apt-get --purge remove stunnel4 -y >/dev/null 2>&1
     sudo apt-get --purge remove dropbear -y >/dev/null 2>&1

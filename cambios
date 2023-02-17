@@ -1,12 +1,12 @@
-   \e[1;31m                 Vercion: \e[32m2.0\e[97m
+   \e[1;31m                 Versión: \e[32m2.0\e[97m
  - Se corrigieron links rotos
  - Se reformo instalador
  - Correccion de instalacion de dropbear 
-   \e[1;31m                 Vercion: \e[32m1.1\e[97m
+   \e[1;31m                 Versión: \e[32m1.1\e[97m
  - Se agrego SSLH
  - Fix importante en admin de base de user
  - Correccion en Monitor Op8 
-   \e[1;31m                 Vercion: \e[32m1.0\e[97m
+   \e[1;31m                 Versión: \e[32m1.0\e[97m
  - Source Code Renovado
  - Creacion de SSH mediante SSH Normal/Token/HWID
  - Optimizacion en menus de control SSH/SSL/V2RAY

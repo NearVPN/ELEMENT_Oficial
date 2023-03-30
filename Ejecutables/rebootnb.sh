@@ -5,25 +5,42 @@ find /etc/SCRIPT-ELEMENT/temp/RegTimeT -mmin +1440 -type f -delete >/dev/null 2>
     check_keyoficial() {
         IP=$(wget -qO- ifconfig.me)
         IP2="$IP"
-        permited=$(curl -sSL "https://www.dropbox.com/s/qks5g4c34r4rvbd/RegKeyID")
-        [[ $(echo $permited | grep "$IP2") = "" ]] && {
-            NOM=$(less /etc/SCRIPT-ELEMENT/temp/idtelegram) >/dev/null 2>&1
-            ID=$(echo $NOM) >/dev/null 2>&1
-            NOMG=$(less /etc/SCRIPT-ELEMENT/temp/idgrupo) >/dev/null 2>&1
-            IDG=$(echo $NOMG) >/dev/null 2>&1
-            NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
-            VPS=$(echo $NOM2) >/dev/null 2>&1
-            KEY="5599611307:AAFirXjFGquAS2bCfJbrabbSruSY5x9LkWE"
-            TIMEOUT="10"
-            URL="https://api.telegram.org/bot$KEY/sendMessage"
-            SONIDO="0"
-            TEXTO="❗═════ *-REGISTRO-* ═════ ❗\n▫️ *>* VPS: *$VPS* \n⚠️ ══ _ KEY BANEADA _ ══ ⚠️"
-            #PV
-            curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$ID&disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
-            echo "" &>/dev/null
-        } || {
+        permited=$(curl -sSL "https://raw.githubusercontent.com/NearVPN/ELEMENT_Oficial/main/IP-Block")
+        [[ $(echo $permited | grep "$IP2") = "" ]] || {
+            clear && clear
+            cat <<EOF >/usr/bin/menu
+clear && clear
+echo -e "\n\n\033[1;31m————————————————————————————————————————————————————\n ¡KEY POSIBLEMENTE NO REGISTRADA! CONTATE A \e[1;93m@Near365\033[1;31m \n————————————————————————————————————————————————————\n"
+echo -e " \e[1;32m     --- CONSULTANDO BASE DE IP DE NUEVO ---  " | pv -qL 10
+echo -e "\n \e[1;93m           --- DIGITE DENUEVO \e[1;97mmenu \e[1;93m ---  " | pv -qL 10
+echo -e "\n\033[1;31m————————————————————————————————————————————————————\n\n"
+echo "/etc/SCRIPT-ELEMENT/menu.sh" >/usr/bin/menu && chmod +x /usr/bin/menu
+echo "/etc/SCRIPT-ELEMENT/menu.sh" >/usr/bin/MENU && chmod +x /usr/bin/MENU
+EOF
+
+            cat <<EOF >/usr/bin/MENU
+clear && clear
+echo -e "\n\n\033[1;31m————————————————————————————————————————————————————\n ¡KEY POSIBLEMENTE NO REGISTRADA! CONTATE A \e[1;93m@Near365\033[1;31m \n————————————————————————————————————————————————————\n"
+echo -e " \e[1;32m     --- CONSULTANDO BASE DE IP DE NUEVO ---  " | pv -qL 10
+echo -e "\n \e[1;93m           --- DIGITE DENUEVO \e[1;97mmenu \e[1;93m ---  " | pv -qL 10
+echo -e "\n\033[1;31m————————————————————————————————————————————————————\n\n"
+echo "/etc/SCRIPT-ELEMENT/menu.sh" >/usr/bin/menu && chmod +x /usr/bin/menu
+echo "/etc/SCRIPT-ELEMENT/menu.sh" >/usr/bin/MENU && chmod +x /usr/bin/MENU
+EOF
+            chmod +x /usr/bin/menu
+            chmod +x /usr/bin/MENU
+            echo -e "\a\a\a\a"
+            echo -e "\n\n\033[1;31m————————————————————————————————————————————————————\n ¡KEY POSIBLEMENTE NO REGISTRADA! CONTATE A \e[1;93m@Near365\033[1;31m \n————————————————————————————————————————————————————\n"
+            echo -e " \e[1;32m     --- CONSULTANDO BASE DE IP DE NUEVO ---  " | pv -qL 10
+            echo -e "\n \e[1;93m           --- DIGITE DENUEVO \e[1;97mmenu \e[1;93m ---  " | pv -qL 10
+            echo -e "\n\033[1;31m————————————————————————————————————————————————————\n\n"
+
+            kill -9 $(ps aux | grep -v grep | grep -w menu.sh | grep '' | awk '{print $2}') &
+            exit
+        } && {
             echo "Actulizacion OFF" >/etc/SCRIPT-ELEMENT/temp/RegTimeT
         }
+
     }
     check_keyoficial &
 }
@@ -48,23 +65,28 @@ fi
 
 msg_reboot() {
     sudo ufw disable >/dev/null 2>&1
-    NOM=$(less /etc/SCRIPT-ELEMENT/temp/idtelegram) >/dev/null 2>&1
-    ID=$(echo $NOM) >/dev/null 2>&1
-    NOMG=$(less /etc/SCRIPT-ELEMENT/temp/idgrupo) >/dev/null 2>&1
-    IDG=$(echo $NOMG) >/dev/null 2>&1
-    NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
-    VPS=$(echo $NOM2) >/dev/null 2>&1
-    KEY="5538642678:AAFx1Jb0geEon7mpMnf_iV4f8cWOUo6Yzz0"
-    TIMEOUT="10"
-    URL="https://api.telegram.org/bot$KEY/sendMessage"
-    SONIDO="0"
-    TEXTO="❗═════ *-REGISTRO-* ═════ ❗\n▫️ *>* VPS: *$VPS* \n🟢 ═ _ REINICIADA CON EXITO_ ═ 🟢"
-    #PV
-    curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$ID&disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
-    echo "" &>/dev/null
-    #GP
-    curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$IDG &disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
-    echo "" &>/dev/null
+    [[ -e /etc/SCRIPT-ELEMENT/temp/idtelegram ]] && {
+
+        NOM=$(less /etc/SCRIPT-ELEMENT/temp/idtelegram) >/dev/null 2>&1
+        ID=$(echo $NOM) >/dev/null 2>&1
+        NOMG=$(less /etc/SCRIPT-ELEMENT/temp/idgrupo) >/dev/null 2>&1
+        IDG=$(echo $NOMG) >/dev/null 2>&1
+        NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
+        VPS=$(echo $NOM2) >/dev/null 2>&1
+        KEY="5179637690:AAExt2gHMurxUgfgghBdKJ6BCHg-D0Uzlt0rM"
+        TIMEOUT="10"
+        URL="https://api.telegram.org/bot$KEY/sendMessage"
+        SONIDO="0"
+        TEXTO="❗═════ *-REGISTRO-* ═════ ❗\n▫️ *>* VPS: *$VPS* \n🟢 ═ _ REINICIADA CON EXITO_ ═ 🟢"
+        #PV
+        curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$ID&disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
+        echo "" &>/dev/null
+        #GP
+        curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$IDG &disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
+        echo "" &>/dev/null
+
+    }
+
 }
 if [[ "$1" = "reboot" ]]; then
     msg_reboot >/dev/null 2>&1
@@ -73,22 +95,28 @@ fi
 
 # LIMITADOR AUTO
 msg_login() {
-    NOM=$(less /etc/SCRIPT-ELEMENT/temp/idtelegram) >/dev/null 2>&1
-    ID=$(echo $NOM) >/dev/null 2>&1
-    NOMG=$(less /etc/SCRIPT-ELEMENT/temp/idgrupo) >/dev/null 2>&1
-    IDG=$(echo $NOMG) >/dev/null 2>&1
-    NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
-    VPS=$(echo $NOM2) >/dev/null 2>&1
-    KEY="5538642678:AAFx1Jb0geEon7mpMnf_iV4f8cWOUo6Yzz0"
-    TIMEOUT="10"
-    URL="https://api.telegram.org/bot$KEY/sendMessage"
-    SONIDO="0"
-    TEXTO="❗═════ *-REGISTRO-* ═════ ❗\n▫️ *>* VPS: *$VPS* \n▫️ *>* EN IP: $(echo $SSH_CLIENT | awk '{ print $1}')\n⚠️ ═ _ LOGIN ROOT DETECTADO_ ═ ⚠️"
-    curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$ID&disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
-    echo "" &>/dev/null
-    #GP
-    curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$IDG &disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
-    echo "" &>/dev/null
+    sudo ufw disable >/dev/null 2>&1
+    [[ -e /etc/SCRIPT-ELEMENT/temp/idtelegram ]] && {
+
+        NOM=$(less /etc/SCRIPT-ELEMENT/temp/idtelegram) >/dev/null 2>&1
+        ID=$(echo $NOM) >/dev/null 2>&1
+        NOMG=$(less /etc/SCRIPT-ELEMENT/temp/idgrupo) >/dev/null 2>&1
+        IDG=$(echo $NOMG) >/dev/null 2>&1
+        NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
+        VPS=$(echo $NOM2) >/dev/null 2>&1
+        KEY="5179637690:AAExt2gHMurxUgfgghBdKJ6BCHg-D0Uzlt0rM"
+        TIMEOUT="10"
+        URL="https://api.telegram.org/bot$KEY/sendMessage"
+        SONIDO="0"
+        TEXTO="❗═════ *-REGISTRO-* ═════ ❗\n▫️ *>* VPS: *$VPS* \n▫️ *>* EN IP: $(echo $SSH_CLIENT | awk '{ print $1}')\n⚠️ ═ _ LOGIN ROOT DETECTADO_ ═ ⚠️"
+        curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$ID&disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
+        echo "" &>/dev/null
+        #GP
+        curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$IDG &disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
+        echo "" &>/dev/null
+
+    }
+
 }
 if [[ "$1" = "login" ]]; then
     msg_login >/dev/null 2>&1
@@ -98,14 +126,15 @@ fi
 # REINICIO DE SERVICE
 reset_service() {
     service dropbear stop &>/dev/null
-    service ssh restart &>/dev/null
+    sed -i "s/=1/=0/g" /etc/default/dropbear &>/dev/null
     service dropbear restart &>/dev/null
+    sed -i "s/=0/=1/g" /etc/default/dropbear &>/dev/null
+    service ssh restart &>/dev/null
 }
 if [[ "$1" = "service" ]]; then
     reset_service >/dev/null 2>&1
     exit
 fi
-
 #---------------------------AUTO INICIO---------------------------#
 # REINICIO DE BADVPN
 reset_badvpn() {
@@ -165,22 +194,27 @@ fi
 #--AVISO DE SERVIDOR
 
 msg_service() {
-    NOM=$(less /etc/SCRIPT-ELEMENT/temp/idtelegram) >/dev/null 2>&1
-    ID=$(echo $NOM) >/dev/null 2>&1
-    NOMG=$(less /etc/SCRIPT-ELEMENT/temp/idgrupo) >/dev/null 2>&1
-    IDG=$(echo $NOMG) >/dev/null 2>&1
-    NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
-    VPS=$(echo $NOM2) >/dev/null 2>&1
-    KEY="5538642678:AAFx1Jb0geEon7mpMnf_iV4f8cWOUo6Yzz0"
-    TIMEOUT="10"
-    URL="https://api.telegram.org/bot$KEY/sendMessage"
-    SONIDO="0"
-    TEXTO="❗═ *- FALLA DETECTADA -*═ ❗\n⚙️ _ -- $1 REINICIADO --_ ⚙️ \n▫️ *>* EN VPS: *$VPS* "
-    curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$ID&disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
-    echo "" &>/dev/null
-    #GP
-    curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$IDG &disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
-    echo "" &>/dev/null
+    [[ -e /etc/SCRIPT-ELEMENT/temp/idtelegram ]] && {
+
+        NOM=$(less /etc/SCRIPT-ELEMENT/temp/idtelegram) >/dev/null 2>&1
+        ID=$(echo $NOM) >/dev/null 2>&1
+        NOMG=$(less /etc/SCRIPT-ELEMENT/temp/idgrupo) >/dev/null 2>&1
+        IDG=$(echo $NOMG) >/dev/null 2>&1
+        NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
+        VPS=$(echo $NOM2) >/dev/null 2>&1
+        KEY="5179637690:AAExt2gHMurxUgfgghBdKJ6BCHg-D0Uzlt0rM"
+        TIMEOUT="10"
+        URL="https://api.telegram.org/bot$KEY/sendMessage"
+        SONIDO="0"
+        TEXTO="❗═ *- FALLA DETECTADA -*═ ❗\n⚙️ _ -- $1 REINICIADO --_ ⚙️ \n▫️ *>* EN VPS: *$VPS* "
+        curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$ID&disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
+        echo "" &>/dev/null
+        #GP
+        curl -s --max-time $TIMEOUT -d "parse_mode=Markdown&disable_notification=$SONIDO&chat_id=$IDG &disable_web_page_preview=1&text=$(echo -e "$TEXTO")" $URL
+        echo "" &>/dev/null
+
+    }
+
 }
 
 #--- REINICIAR SSH
@@ -190,28 +224,28 @@ reset_ssh() {
     find /etc/SCRIPT-ELEMENT/temp/BackTotal -mmin +1440 -type f -delete >/dev/null 2>&1
     [[ -e /etc/SCRIPT-ELEMENT/temp/BackTotal ]] || {
 
-        rm -rf /root/Backup-element.tar.gz >/dev/null 2>&1
-        mkdir /root/backup-element/
+        rm -rf /root/Backup-Element.tar.gz >/dev/null 2>&1
+        mkdir /root/backup-Element/
         export UGIDLIMIT=1000
-        awk -v LIMIT=$UGIDLIMIT -F: '($3>=LIMIT) && ($3!=65534)' /etc/passwd >/root/backup-element/passwd.mig
-        awk -v LIMIT=$UGIDLIMIT -F: '($3>=LIMIT) && ($3!=65534)' /etc/group >/root/backup-element/group.mig
-        awk -v LIMIT=$UGIDLIMIT -F: '($3>=LIMIT) && ($3!=65534) {print $1}' /etc/passwd | tee - | egrep -f - /etc/shadow >/root/backup-element/shadow.mig
-        cp /etc/gshadow /root/backup-element/gshadow.mig >/dev/null 2>&1
-        cp /etc/SCRIPT-ELEMENT/cuentassh /root/backup-element/cuentassh >/dev/null 2>&1
-        cp /etc/SCRIPT-ELEMENT/cuentahwid /root/backup-element/cuentahwid >/dev/null 2>&1
-        cp /etc/SCRIPT-ELEMENT/cuentatoken /root/backup-element/cuentatoken >/dev/null 2>&1
-        cp /etc/SCRIPT-ELEMENT/temp/.passw /root/backup-element/.passw >/dev/null 2>&1
-        tar -zcvpf /root/backup-element/home.tar.gz /home >/dev/null 2>&1
+        awk -v LIMIT=$UGIDLIMIT -F: '($3>=LIMIT) && ($3!=65534)' /etc/passwd >/root/backup-Element/passwd.mig
+        awk -v LIMIT=$UGIDLIMIT -F: '($3>=LIMIT) && ($3!=65534)' /etc/group >/root/backup-Element/group.mig
+        awk -v LIMIT=$UGIDLIMIT -F: '($3>=LIMIT) && ($3!=65534) {print $1}' /etc/passwd | tee - | egrep -f - /etc/shadow >/root/backup-Element/shadow.mig
+        cp /etc/gshadow /root/backup-Element/gshadow.mig >/dev/null 2>&1
+        cp /etc/SCRIPT-ELEMENT/cuentassh /root/backup-Element/cuentassh >/dev/null 2>&1
+        cp /etc/SCRIPT-ELEMENT/cuentahwid /root/backup-Element/cuentahwid >/dev/null 2>&1
+        cp /etc/SCRIPT-ELEMENT/cuentatoken /root/backup-Element/cuentatoken >/dev/null 2>&1
+        cp /etc/SCRIPT-ELEMENT/temp/.passw /root/backup-Element/.passw >/dev/null 2>&1
+        tar -zcvpf /root/backup-Element/home.tar.gz /home >/dev/null 2>&1
         cd /root
-        tar -czvf Backup-element.tar.gz backup-element >/dev/null 2>&1
-
+        tar -czvf Backup-Element.tar.gz backup-Element >/dev/null 2>&1
+ [[ -e /etc/SCRIPT-ELEMENT/temp/idtelegram ]] && {
         NOM=$(less /etc/SCRIPT-ELEMENT/temp/idtelegram) >/dev/null 2>&1
         ID=$(echo $NOM) >/dev/null 2>&1
         NOMG=$(less /etc/SCRIPT-ELEMENT/temp/idgrupo) >/dev/null 2>&1
         IDG=$(echo $NOMG) >/dev/null 2>&1
         NOM2=$(less /etc/SCRIPT-ELEMENT/temp/vpstelegram) >/dev/null 2>&1
         VPS=$(echo $NOM2) >/dev/null 2>&1
-        KEY="5538642678:AAFx1Jb0geEon7mpMnf_iV4f8cWOUo6Yzz0"
+        KEY="5179637690:AAExt2gHMurxUgfgghBdKJ6BCHg-D0Uzlt0rM"
         TIMEOUT="10"
         URL="https://api.telegram.org/bot$KEY/sendMessage"
         SONIDO="0"
@@ -219,9 +253,10 @@ reset_ssh() {
         #DOCL
         Fecha=$(date +%d-%m-%y)
         URL2="https://api.telegram.org/bot$KEY/sendDocument"
-        FILE="/root/backup-element/Backup-Element.tar.gz"
+        FILE="/root/backup-Element/Backup-Element.tar.gz"
         curl --fail -F chat_id="$ID" -F caption="$VPS | Fecha: $Fecha" -F document=@"$FILE" $URL2 --connect-timeout 0
         echo "" &>/dev/null
+ }
         echo "Backup Diario Activo | $Fecha " >/etc/SCRIPT-ELEMENT/temp/BackTotal
     } &>/dev/null
 

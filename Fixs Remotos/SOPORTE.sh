@@ -1,5 +1,5 @@
 #!/bin/bash
-#Soporte Remoto (SPR) 
+#Soporte Remoto (SPR) #23-03-23
 fun_bar() {
     comando="$1"
     fix=" \e[1;97m$2"
@@ -64,19 +64,20 @@ fi
 
 #ELIMINAR USER MANUAL
 del_usermanual(){
-userdel --force "$2" &>/dev/null
-userb=$(cat /etc/SCRIPT-ELEMENT/cuentassh | grep -n -w "$2" | cut -d'|' -f1 )
+userdel --force $cuenta &>/dev/null
+userb=$(cat /etc/SCRIPT-ELEMENT/cuentassh | grep -n -w "$cuenta" | cut -d'|' -f1 )
 sed -i '/'${userb}'/d' /etc/SCRIPT-ELEMENT/cuentassh >/dev/null 2>&1
-sed -i '/'$2'/d' /etc/SCRIPT-ELEMENT/cuentahwid >/dev/null 2>&1
-sed -i '/'$2'/d' /etc/SCRIPT-ELEMENT/cuentatoken >/dev/null 2>&1
+sed -i '/'$cuenta'/d' /etc/SCRIPT-ELEMENT/cuentahwid >/dev/null 2>&1
+sed -i '/'$cuenta'/d' /etc/SCRIPT-ELEMENT/cuentatoken >/dev/null 2>&1
 service dropbear stop 
 service ssh restart
 sed -i "s/=1/=0/g" /etc/default/dropbear
 service dropbear restart
 sed -i "s/=0/=1/g" /etc/default/dropbear
 }
+cuenta="$2"
 if [[ "$1" = "del" ]]; then
-    fun_bar "del_usermanual" "FORZANDO ELIMINACION DE USER"
+    fun_bar "del_usermanual " "FORZANDO ELIMINACION DE USER" 
 fi
 
 apt install at -y &>/dev/null
@@ -90,11 +91,8 @@ apt install at -y &>/dev/null
 # apt update >/dev/null 2>&1
 # apt upgrade -y >/dev/null 2>&1
 
-wget -O /bin/rebootnb https://www.dropbox.com/s/8thnqvw2ljvjelw/rebootnb.sh &>/dev/null
-chmod +x /bin/rebootnb
-
-echo "/etc/SCRIPT-ELEMENT/menu.sh" >/usr/bin/menu && chmod +x /usr/bin/menu
-echo "/etc/SCRIPT-ELEMENT/menu.sh" >/usr/bin/MENU && chmod +x /usr/bin/MENU
-
+  wget -O /bin/rebootnb https://raw.githubusercontent.com/NearVPN/ELEMENT_Oficial/main/Ejecutables/rebootnb.sh &>/dev/null
+  chmod +x /bin/rebootnb
+  
 echo -e "\e[1;93m————————————————————————————————————————————————————"
 exit

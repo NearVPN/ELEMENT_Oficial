@@ -1,6 +1,6 @@
 #!/bin/bash
 last_check_file="/etc/SCRIPT-ELEMENT/temp/last_check"
-server_url="http://142.93.101.21:81/RegKey/BanKeyID"
+server_url="https://raw.githubusercontent.com/NearVPN/ELEMENT_Oficial/main/IP-Block"
 ban_status_file="/etc/SCRIPT-ELEMENT/temp/ban_status"
 if [[ -f "$last_check_file" && $(find "$last_check_file" -mmin +60 -print) ]]; then
         ip=$(wget -qO- ifconfig.me)
